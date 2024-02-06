@@ -1,27 +1,24 @@
+import exception.InvalidPrimaryKeyException;
 import model.Book;
-
-import java.util.Properties;
 
 public class TestProj1 {
     public static void main(String[] args) {
-        Book book = new Book("Me", "Myself");
+
+        Book book = null;
+
         try {
             book = new Book("100");
-            System.out.println("Success");
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (InvalidPrimaryKeyException e) {
+            System.out.println("Invalid Key");
+            System.exit(1);
         }
 
-        System.out.println(book);
+        // Get Title/Author/PubYear
+        String title = (String) book.getState("bookTitle");
+        String author = (String) book.getState("author");
+        String pubYear = (String) book.getState("pubYear");
 
-        // Trying persistent state stuff
-        System.out.println("PART 2 WITH PERSISTENT STATE INFO...\n");
-
-        Properties bookState = book.getPersistentState();
-
-        System.out.println(bookState);
-
-        // Get Author
-
+        String out = "Author: " + author + "; Title: " + title + "; Publication Year: " + pubYear;
+        System.out.println(out);
     }
 }

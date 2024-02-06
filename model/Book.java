@@ -39,9 +39,6 @@ public class Book extends EntityBase
 
 		Vector<Properties> allDataRetrieved = getSelectQueryResult(query);
 
-		System.out.println("TESTING NUMBER IS: ");
-		System.out.println(allDataRetrieved.size());
-
 		// You must get one account at least
 
         // MATT EDIT: Made a comment in class to check that size is > 0 too.
@@ -75,7 +72,7 @@ public class Book extends EntityBase
 
 			}
 		}
-		// If no account found for this user name, throw an exception
+		// If no account found for this username, throw an exception
 		else
 		{
 			throw new InvalidPrimaryKeyException("No account matching id : " + accountNumber + " found.");

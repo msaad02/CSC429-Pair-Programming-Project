@@ -1,7 +1,7 @@
 package model;
 
 // system imports
-// import java.util.Properties;
+import java.util.Properties;
 import java.util.Vector;
 
 public class BookCollection {
