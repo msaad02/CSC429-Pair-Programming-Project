@@ -54,7 +54,6 @@ public abstract class EntityBase extends Persistable implements IModel
 	// forward declarations
 	public abstract Object getState(String key);
 	public abstract void stateChangeRequest(String key, Object value);
-	protected abstract void initializeSchema(String tableName);
 
 	// constructor for this class
 	//----------------------------------------------------------
@@ -146,5 +145,14 @@ public abstract class EntityBase extends Persistable implements IModel
 		
     }
 
+
+	// I MOVED IT HERE. It just makes more sense imo.
+	protected void initializeSchema(String tableName)
+	{
+		if (mySchema == null)
+		{
+			mySchema = getSchemaInfo(tableName);
+		}
+	}
 }
 
