@@ -19,46 +19,85 @@ public class BookCollection extends EntityBase {
         bookList = new Vector<Book>();
     }
 
-    public Vector<Book> findBooksOlderThanDate(String year) {
+
+    public void updateBookListFromSQL(String query) throws Exception {
         // Reset bookList
-        bookList = new Vector<Book>();
+        this.bookList = new Vector<Book>();
 
         // Pull the data
-        String query = "SELECT * FROM " + myTableName + " WHERE pubYear < " + year;
         Vector<Properties> allDataRetrieved = getSelectQueryResult(query);
 
         // Loop through data received and make fill bookList with Book objects
         for (int i = 0; i < allDataRetrieved.size(); i++) {
-            bookList.add(new Book(allDataRetrieved.elementAt(i)));
+            this.bookList.add(new Book(allDataRetrieved.elementAt(i)));
+        }
+    }
+
+
+    public Vector<Book> findBooksOlderThanDate(String year) {
+
+        String query = "SELECT * FROM " + myTableName + " WHERE pubYear < " + year;
+
+        try {
+            updateBookListFromSQL(query);
+        } catch (Exception e) {
+            System.out.println("ERROR: Invalid publication year. '" + year + "' is not valid!");
         }
 
-        // Return all the books
-        return bookList;
+        return this.bookList;
     }
 
     public Vector<Book> findBooksNewerThanDate(String year) {
-        // Reset bookList
-        bookList = new Vector<Book>();
 
         // Pull the data
         String query = "SELECT * FROM " + myTableName + " WHERE pubYear > " + year;
-        Vector<Properties> allDataRetrieved = getSelectQueryResult(query);
 
-        // Loop through data received and make fill bookList with Book objects
-        for (int i = 0; i < allDataRetrieved.size(); i++) {
-            bookList.add(new Book(allDataRetrieved.elementAt(i)));
+        try {
+            updateBookListFromSQL(query);
+        } catch (Exception e) {
+            System.out.println("ERROR: Invalid publication year. '" + year + "' is not valid!");
         }
 
-        // Return all the books
-        return bookList;
+        return this.bookList;
     }
 
+    public Vector<Book> findBooksWithTitleLike(String phrase) {
+        String query = "SELECT * FROM " + myTableName + " WHERE bookTitle LIKE '%" + phrase + "%'";
 
+        try {
+            updateBookListFromSQL(query);
+        } catch (Exception e) {
+            System.out.println("ERROR: '" + phrase + "' is an INVALID string.");
+        }
 
+        return this.bookList;
+    }
 
+    public Vector<Book> findBooksWithAuthorLike(String phrase) {
+        String query = "SELECT * FROM " + myTableName + " WHERE author LIKE '%" + phrase + "%'";
 
+        try {
+            updateBookListFromSQL(query);
+        } catch (Exception e) {
+            System.out.println("ERROR: '" + phrase + "' is an INVALID string.");
+        }
 
+        return this.bookList;
+    }
 
+//    // TEMPLATE FOR FUNCTIONS
+//    public Vector<Book> findWhatever(String parameter) {
+//
+//        String query = "<SQL STATEMENT>";
+//
+//        try {
+//            updateBookListFromSQL(query);
+//        } catch (Exception e) {
+//            throw new Error("<ERROR MESSAGE>");
+//        }
+//
+//        return this.bookList;
+//    }
 
     // ------ END MATT CHANGES ------
 

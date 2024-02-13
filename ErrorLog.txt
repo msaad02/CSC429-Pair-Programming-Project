@@ -14,3 +14,9 @@
 [6/11/15 5:04 PM]|DepositTransaction|processTransaction|Error|NOTAG|null<Failed to verify ownership of account number : 2.>
 [2/6/24, 2:04 PM]|JDBCBroker|JDBCBroker|Error|NOTAG|null<Could not load driver class[org.mariadb.jdbc.Driver]>
 [2/8/24, 1:13 PM]|Patron|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1054: (conn=178716) Unknown column 'patronId' in 'where clause'>
+[2/13/24, 2:06 PM]|BookCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1054: (conn=25254) Unknown column '1950a' in 'where clause'>
+[2/13/24, 2:07 PM]|BookCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1054: (conn=25317) Unknown column '1950a' in 'where clause'>
+[2/13/24, 2:09 PM]|BookCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1054: (conn=25564) Unknown column '1950a' in 'where clause'>
+[2/13/24, 2:11 PM]|BookCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1054: (conn=25699) Unknown column '1950a' in 'where clause'>
+[2/13/24, 2:19 PM]|BookCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1064: (conn=26256) You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '%Coding%' at line 1>
+[2/13/24, 2:20 PM]|BookCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1064: (conn=26345) You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '%Coding%' at line 1>
