@@ -8,12 +8,6 @@ import exception.InvalidPrimaryKeyException;
 import model.model2.EntityBase;
 
 public class Book extends EntityBase {
-	// Class vars
-	private int bookId; // Primary key, auto-increment
-	private String bookTitle;
-	private String author;
-	private String pubYear;
-	private String status; // Possible values: 'Active' or 'Inactive'
 
 	// Table name in DB
 	private static final String myTableName = "Book";
@@ -21,8 +15,7 @@ public class Book extends EntityBase {
 	// Holds
 	protected Properties dependencies;
 
-	// constructor for this class
-	//----------------------------------------------------------
+	// Constructor using AccountNumber ------------------------------------------------
 	public Book(String accountNumber) throws InvalidPrimaryKeyException {
 		super(myTableName);
 
@@ -57,6 +50,23 @@ public class Book extends EntityBase {
 		// If no account found for this username, throw an exception
 		else {
 			throw new InvalidPrimaryKeyException("No account matching id : " + accountNumber + " found.");
+		}
+	}
+
+	// Constructor using Properties ------------------------------------------------
+	public Book(Properties givenBookData) {
+		super(myTableName);
+
+		persistentState = new Properties();
+
+		Enumeration<?> allKeys = givenBookData.propertyNames();
+		while (allKeys.hasMoreElements()) {
+			String nextKey = (String) allKeys.nextElement();
+			String nextValue = givenBookData.getProperty(nextKey);
+
+			if (nextValue != null) {
+				persistentState.setProperty(nextKey, nextValue);
+			}
 		}
 	}
 

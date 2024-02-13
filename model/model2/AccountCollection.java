@@ -53,7 +53,7 @@ public class AccountCollection  extends EntityBase implements IView
 
 		String query = "SELECT * FROM " + myTableName + " WHERE (OwnerID = " + accountHolderId + ")";
 
-		Vector allDataRetrieved = getSelectQueryResult(query);
+		Vector<Properties> allDataRetrieved = getSelectQueryResult(query);
 
 		if (allDataRetrieved != null)
 		{
@@ -104,16 +104,13 @@ public class AccountCollection  extends EntityBase implements IView
 
 			int result = Account.compare(a,midSession);
 
-			if (result ==0)
-			{
+			if (result ==0) {
 				return middle;
 			}
-			else if (result<0)
-			{
+			else if (result<0) {
 				high=middle-1;
 			}
-			else
-			{
+			else {
 				low=middle+1;
 			}
 
