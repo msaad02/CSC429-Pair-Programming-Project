@@ -2,6 +2,8 @@ import exception.InvalidPrimaryKeyException;
 import model.Book;
 import model.Patron;
 import model.BookCollection;
+
+import java.util.InputMismatchException;
 import java.util.Vector;
 import java.util.Properties;
 import java.util.Scanner;
@@ -18,7 +20,7 @@ public class TestProj1 {
         System.out.println("Welcome to Pair Programming 1 Assignment!");
 
 
-        int userOption;
+        int userOption = 100; // Will be over-written
         String userInput = "Y";
         boolean printList;
         Vector<Book> bookList = null;
@@ -42,9 +44,13 @@ public class TestProj1 {
 
             System.out.print("\nChoice: ");
 
-
-            userOption = input.nextInt();
-
+            try {
+                userOption = input.nextInt();
+            } catch (InputMismatchException e) {
+                userOption = -1;
+                System.out.println("ERROR: Only characters are allowed. Please try again.");
+                input.nextLine();
+            }
 
             printList = true;
 
@@ -96,6 +102,9 @@ public class TestProj1 {
                     System.out.println("No authors contain the phrase '" + userInput + "'.");
                 }
 
+            } else if (userOption == -1) {
+                // SPECIAL CASE. If -1 then just continue with the loop and don't print anything.
+                continue;
             } else {
                 printList = false;
                 System.out.println("ERROR: " + userOption + " is NOT YET IMPLEMENTED.");
