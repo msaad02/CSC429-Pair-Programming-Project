@@ -71,7 +71,7 @@ public class Patron extends EntityBase {
                 // update
                 Properties whereClause = new Properties();
                 whereClause.setProperty("patronId",
-                        persistentState.getProperty("PatronId"));
+                        persistentState.getProperty("patronId"));
                 updatePersistentState(mySchema, persistentState, whereClause);
                 updateStatusMessage = "Patron data for patron number : " + persistentState.getProperty("patronId") + " updated successfully in database!";
             }
