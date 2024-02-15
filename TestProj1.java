@@ -180,13 +180,13 @@ public class TestProj1 {
 
                 Properties newBookInfo = new Properties();
 
-                System.out.print("\nPlease enter a new book title: ");
+                System.out.print("Please enter a new book title: ");
                 newBookInfo.setProperty("bookTitle", input.next());
 
-                System.out.print("\nPlease enter a new book Author: ");
+                System.out.print("Please enter a new book Author: ");
                 newBookInfo.setProperty("author", input.next());
 
-                System.out.print("\nPlease enter a new Publication Year: ");
+                System.out.print("Please enter a new Publication Year: ");
                 newBookInfo.setProperty("pubYear", input.next());
 
                 Book newBook = new Book(newBookInfo);
@@ -198,25 +198,25 @@ public class TestProj1 {
 
                 Properties newPatronInfo = new Properties();
 
-                System.out.print("\nPlease enter a new patron name: ");
+                System.out.print("Please enter a new patron name: ");
                 newPatronInfo.setProperty("patronName", input.next());
 
-                System.out.print("\nPlease enter a new patron address: ");
+                System.out.print("Please enter a new patron address: ");
                 newPatronInfo.setProperty("author", input.next());
 
-                System.out.print("\nPlease enter a new patron city: ");
+                System.out.print("Please enter a new patron city: ");
                 newPatronInfo.setProperty("city", input.next());
 
-                System.out.print("\nPlease enter a new patron state code: ");
+                System.out.print("Please enter a new patron state code: ");
                 newPatronInfo.setProperty("stateCode", input.next());
 
-                System.out.print("\nPlease enter a new patron zip code: ");
+                System.out.print("Please enter a new patron zip code: ");
                 newPatronInfo.setProperty("zip", input.next());
 
-                System.out.print("\nPlease enter a new patron email: ");
+                System.out.print("Please enter a new patron email: ");
                 newPatronInfo.setProperty("email", input.next());
 
-                System.out.print("\nPlease enter a new patron date of birth: ");
+                System.out.print("Please enter a new patron date of birth: ");
                 newPatronInfo.setProperty("dateOfBirth", input.next());
 
                 Patron newPatron = new Patron(newPatronInfo);
