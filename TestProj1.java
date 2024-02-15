@@ -192,6 +192,9 @@ public class TestProj1 {
                 Book newBook = new Book(newBookInfo);
                 newBook.update();
 
+                printList = false;
+                patPrintList = false;
+
             } else if (userOption == 10) { // insertNewPatron
 
                 System.out.println("\nYou have selected 'insertNewPatron'");
@@ -222,6 +225,8 @@ public class TestProj1 {
                 Patron newPatron = new Patron(newPatronInfo);
                 newPatron.update();
 
+                printList = false;
+                patPrintList = false;
 
             } else if (userOption == -1) {
                 // SPECIAL CASE. If -1 then just continue with the loop and don't print anything.
