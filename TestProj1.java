@@ -2,6 +2,7 @@ import exception.InvalidPrimaryKeyException;
 import model.Book;
 import model.Patron;
 import model.BookCollection;
+import model.PatronCollection;
 
 import java.util.InputMismatchException;
 import java.util.Vector;
@@ -13,6 +14,7 @@ public class TestProj1 {
 
         // Init BookCollection
         BookCollection bookCollection = new BookCollection();
+        PatronCollection patronCollection = new PatronCollection();
 
         // Init Scanner obj
         Scanner input = new Scanner(System.in);
@@ -22,7 +24,8 @@ public class TestProj1 {
 
         int userOption = 100; // Will be over-written
         String userInput = "Y";
-        boolean printList;
+        boolean printList; //book printer
+        boolean patPrintList; //Patron printer
         Vector<Book> bookList = null;
         Vector<Patron> patronList = null;
 
@@ -37,10 +40,10 @@ public class TestProj1 {
             System.out.println("4) findBooksWithAuthorLike");
 
             // Patrons
-//        System.out.println("5) findPatronsOlderThan");
-//        System.out.println("6) findPatronsYoungerThan");
-//        System.out.println("7) findPatronsAtZipCode");
-//        System.out.println("8) findPatronsWithNameLike");
+            System.out.println("5) findPatronsOlderThan");
+            System.out.println("6) findPatronsYoungerThan");
+            System.out.println("7) findPatronsAtZipCode");
+            System.out.println("8) findPatronsWithNameLike");
 
             System.out.print("\nChoice: ");
 
@@ -53,6 +56,7 @@ public class TestProj1 {
             }
 
             printList = true;
+            patPrintList = true;
 
             if (userOption == 1) { // findBooksOlderThanDate
 
@@ -66,6 +70,8 @@ public class TestProj1 {
                     System.out.println("No books are older than " + userInput);
                 }
 
+                patPrintList = false;
+
             } else if (userOption == 2) { // findBooksNewerThanDate
 
                 System.out.print("\nYou have selected 'findBooksNewerThanDate'. Please enter a year: ");
@@ -77,6 +83,8 @@ public class TestProj1 {
                     printList = false;
                     System.out.println("No books are newer than " + userInput);
                 }
+
+                patPrintList = false;
 
             } else if (userOption == 3) { // findBooksWithTitleLike
 
@@ -90,6 +98,8 @@ public class TestProj1 {
                     System.out.println("No titles contain the phrase '" + userInput + "'.");
                 }
 
+                patPrintList = false;
+
             } else if (userOption == 4) { // findBooksWithAuthorLike
 
                 System.out.print("\nYou have selected 'findBooksWithAuthorLike'. Please enter a phrase: ");
@@ -102,11 +112,70 @@ public class TestProj1 {
                     System.out.println("No authors contain the phrase '" + userInput + "'.");
                 }
 
+                patPrintList = false;
+
+            } else if (userOption == 5) { // findPatronsOlderThan
+
+                System.out.print("\nYou have selected 'findPatronsOlderThan'. Please enter a year: ");
+                userInput = input.next();
+
+                patronList = patronCollection.findPatronsOlderThan(userInput);
+
+                if (patronList.isEmpty()) {
+                    patPrintList = false;
+                    System.out.println("No Patrons are older than " + userInput);
+                }
+
+                printList = false;
+
+            } else if (userOption == 6) { // findPatronsYoungerThan
+
+                System.out.print("\nYou have selected 'findPatronsYoungerThan'. Please enter a year: ");
+                userInput = input.next();
+
+                patronList = patronCollection.findPatronsYoungerThan(userInput);
+
+                if (patronList.isEmpty()) {
+                    patPrintList = false;
+                    System.out.println("No Patrons are younger than " + userInput);
+                }
+
+                printList = false;
+
+            } else if (userOption == 7) { // findPatronsAtZipCode
+
+                System.out.print("\nYou have selected 'findPatronsAtZipCode'. Please enter a zip code: ");
+                userInput = input.next();
+
+                patronList = patronCollection.findPatronsAtZipCode(userInput);
+
+                if (patronList.isEmpty()) {
+                    patPrintList = false;
+                    System.out.println("No Patrons live in " + userInput + " zip code area");
+                }
+
+                printList = false;
+
+            } else if (userOption == 8) { // findPatronsWithNameLike
+
+                System.out.print("\nYou have selected 'findPatronsWithNameLike'. Please enter a name: ");
+                userInput = input.next();
+
+                patronList = patronCollection.findPatronsWithNameLike(userInput);
+
+                if (patronList.isEmpty()) {
+                    patPrintList = false;
+                    System.out.println("No Patrons with names like " + userInput);
+                }
+
+                printList = false;
+
             } else if (userOption == -1) {
                 // SPECIAL CASE. If -1 then just continue with the loop and don't print anything.
                 continue;
             } else {
                 printList = false;
+                patPrintList = false;
                 System.out.println("ERROR: " + userOption + " is NOT YET IMPLEMENTED.");
             }
 
@@ -118,6 +187,13 @@ public class TestProj1 {
                 }
             }
 
+            // Print the Patron list
+            if (patPrintList) {
+                for (int i = 0; i < patronList.size(); i++) {
+                    System.out.println(patronList.elementAt(i));
+                }
+            }
+
             // Prompt user if they would like to run again.
             System.out.print("\nWould you like to run again? Y/n: ");
             userInput = input.next();
@@ -125,4 +201,6 @@ public class TestProj1 {
 
         System.out.println("\nBye!");
     }
+
 }
+

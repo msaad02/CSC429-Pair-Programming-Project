@@ -55,6 +55,22 @@ public class Patron extends EntityBase {
         }
     }
 
+    public Patron(Properties givenPatronData) {
+        super(myTableName);
+
+        persistentState = new Properties();
+
+        Enumeration<?> allKeys = givenPatronData.propertyNames();
+        while (allKeys.hasMoreElements()) {
+            String nextKey = (String) allKeys.nextElement();
+            String nextValue = givenPatronData.getProperty(nextKey);
+
+            if (nextValue != null) {
+                persistentState.setProperty(nextKey, nextValue);
+            }
+        }
+    }
+
     @Override
     public Object getState(String key) {
         if (key.equals("UpdateStatusMessage"))
@@ -71,6 +87,7 @@ public class Patron extends EntityBase {
 
     @Override
     public String toString() {
+
         return "{" +
                 "PatronID: " + (String) this.getState("patronId") +
                 ", Name: " + (String) this.getState("name") +
