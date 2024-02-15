@@ -1,6 +1,5 @@
 package model;
 
-import model.Book;
 import model.model2.EntityBase;
 
 // system imports

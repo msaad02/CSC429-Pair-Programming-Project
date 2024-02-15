@@ -99,7 +99,6 @@ public class PatronCollection extends EntityBase {
         return this.patronList;
     }
 
-
     //Overrides------
     @Override
     public Object getState(String key) {

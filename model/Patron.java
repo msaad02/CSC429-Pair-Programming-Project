@@ -57,6 +57,11 @@ public class Patron extends EntityBase {
         }
     }
 
+    public void update() // save()
+    {
+        updateStateInDatabase();
+    }
+
     private void updateStateInDatabase()
     {
         try
