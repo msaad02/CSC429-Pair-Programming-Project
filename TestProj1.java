@@ -190,7 +190,7 @@ public class TestProj1 {
                 newBookInfo.setProperty("pubYear", input.next());
 
                 Book newBook = new Book(newBookInfo);
-                newBook.insertToDB();
+                newBook.update();
 
             } else if (userOption == 10) { // insertNewPatron
 
@@ -220,7 +220,7 @@ public class TestProj1 {
                 newPatronInfo.setProperty("dateOfBirth", input.next());
 
                 Patron newPatron = new Patron(newPatronInfo);
-                newPatron.insertToDB();
+                newPatron.update();
 
 
             } else if (userOption == -1) {

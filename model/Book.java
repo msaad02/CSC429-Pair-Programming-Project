@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.SQLException;
 import java.util.Enumeration;
 import java.util.Properties;
 import java.util.Vector;
@@ -11,6 +12,9 @@ public class Book extends EntityBase {
 
 	// Table name in DB
 	private static final String myTableName = "Book";
+
+	// GUI components
+	private String updateStatusMessage = "";
 
 	// Holds
 	protected Properties dependencies;
@@ -70,9 +74,39 @@ public class Book extends EntityBase {
 		}
 	}
 
+	public void update() // save()
+	{
+		updateStateInDatabase();
+	}
 
-	public void insertToDB() {
-
+	//-----------------------------------------------------------------------------------
+	private void updateStateInDatabase()
+	{
+		try
+		{
+			if (persistentState.getProperty("bookID") != null)
+			{
+				// update
+				Properties whereClause = new Properties();
+				whereClause.setProperty("bookID",
+						persistentState.getProperty("bookID"));
+				updatePersistentState(mySchema, persistentState, whereClause);
+				updateStatusMessage = "Account data for account number : " + persistentState.getProperty("bookID") + " updated successfully in database!";
+			}
+			else
+			{
+				// insert
+				Integer accountNumber = insertAutoIncrementalPersistentState(mySchema, persistentState);
+				persistentState.setProperty("bookID", "" + accountNumber.intValue());
+				updateStatusMessage = "Account data for new account : " +  persistentState.getProperty("bookID")
+						+ "installed successfully in database!";
+			}
+		}
+		catch (SQLException ex)
+		{
+			updateStatusMessage = "Error in installing account data in database!";
+		}
+		//DEBUG System.out.println("updateStateInDatabase " + updateStatusMessage);
 	}
 
 	@Override
