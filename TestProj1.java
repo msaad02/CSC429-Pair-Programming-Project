@@ -45,6 +45,10 @@ public class TestProj1 {
             System.out.println("7) findPatronsAtZipCode");
             System.out.println("8) findPatronsWithNameLike");
 
+            // Insert into Book/Patron
+            System.out.println("9) insertNewBook");
+            System.out.println("10) insertNewPatron");
+
             System.out.print("\nChoice: ");
 
             try {
@@ -169,6 +173,27 @@ public class TestProj1 {
                 }
 
                 printList = false;
+
+            } else if (userOption == 10) { // insertNewBook
+
+                System.out.println("\nYou have selected 'insertNewBook'");
+
+                Properties newBookInfo = new Properties();
+
+                System.out.print("\nPlease enter a new book title: ");
+                newBookInfo.setProperty("bookTitle", input.next());
+
+                System.out.print("\nPlease enter a new book Author: ");
+                newBookInfo.setProperty("author", input.next());
+
+                System.out.print("\nPlease enter a new Publication Year: ");
+                newBookInfo.setProperty("pubYear", input.next());
+
+                Book newBook = new Book(newBookInfo);
+                newBook.insertToDB();
+
+
+
 
             } else if (userOption == -1) {
                 // SPECIAL CASE. If -1 then just continue with the loop and don't print anything.

@@ -70,6 +70,11 @@ public class Book extends EntityBase {
 		}
 	}
 
+
+	public void insertToDB() {
+
+	}
+
 	@Override
 	public Object getState(String key) {
 		if (key.equals("UpdateStatusMessage"))
