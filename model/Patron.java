@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.SQLException;
 import java.util.Enumeration;
 import java.util.Properties;
 import java.util.Vector;
@@ -12,6 +13,7 @@ public class Patron extends EntityBase {
 
     // Table name in DB
     private static final String myTableName = "Patron";
+    private String updateStatusMessage = "";
 
     // Holds
     protected Properties dependencies;
@@ -53,6 +55,35 @@ public class Patron extends EntityBase {
         else {
             throw new InvalidPrimaryKeyException("No account matching id : " + patronId + " found.");
         }
+    }
+
+    private void updateStateInDatabase()
+    {
+        try
+        {
+            if (persistentState.getProperty("patronId") != null)
+            {
+                // update
+                Properties whereClause = new Properties();
+                whereClause.setProperty("patronId",
+                        persistentState.getProperty("PatronId"));
+                updatePersistentState(mySchema, persistentState, whereClause);
+                updateStatusMessage = "Patron data for patron number : " + persistentState.getProperty("patronId") + " updated successfully in database!";
+            }
+            else
+            {
+                // insert
+                Integer patronId = insertAutoIncrementalPersistentState(mySchema, persistentState);
+                persistentState.setProperty("patronId", "" + patronId.intValue());
+                updateStatusMessage = "Account data for new account : " +  persistentState.getProperty("patronId")
+                        + "installed successfully in database!";
+            }
+        }
+        catch (SQLException ex)
+        {
+            updateStatusMessage = "Error in installing account data in database!";
+        }
+        //DEBUG System.out.println("updateStateInDatabase " + updateStatusMessage);
     }
 
     public Patron(Properties givenPatronData) {

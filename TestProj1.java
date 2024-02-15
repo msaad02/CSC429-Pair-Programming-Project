@@ -174,7 +174,7 @@ public class TestProj1 {
 
                 printList = false;
 
-            } else if (userOption == 10) { // insertNewBook
+            } else if (userOption == 9) { // insertNewBook
 
                 System.out.println("\nYou have selected 'insertNewBook'");
 
@@ -192,7 +192,35 @@ public class TestProj1 {
                 Book newBook = new Book(newBookInfo);
                 newBook.insertToDB();
 
+            } else if (userOption == 10) { // insertNewPatron
 
+                System.out.println("\nYou have selected 'insertNewPatron'");
+
+                Properties newPatronInfo = new Properties();
+
+                System.out.print("\nPlease enter a new patron name: ");
+                newPatronInfo.setProperty("patronName", input.next());
+
+                System.out.print("\nPlease enter a new patron address: ");
+                newPatronInfo.setProperty("author", input.next());
+
+                System.out.print("\nPlease enter a new patron city: ");
+                newPatronInfo.setProperty("city", input.next());
+
+                System.out.print("\nPlease enter a new patron state code: ");
+                newPatronInfo.setProperty("stateCode", input.next());
+
+                System.out.print("\nPlease enter a new patron zip code: ");
+                newPatronInfo.setProperty("zip", input.next());
+
+                System.out.print("\nPlease enter a new patron email: ");
+                newPatronInfo.setProperty("email", input.next());
+
+                System.out.print("\nPlease enter a new patron date of birth: ");
+                newPatronInfo.setProperty("dateOfBirth", input.next());
+
+                Patron newPatron = new Patron(newPatronInfo);
+                newPatron.insertToDB();
 
 
             } else if (userOption == -1) {
