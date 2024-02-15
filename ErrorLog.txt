@@ -20,3 +20,4 @@
 [2/13/24, 2:11 PM]|BookCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1054: (conn=25699) Unknown column '1950a' in 'where clause'>
 [2/13/24, 2:19 PM]|BookCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1064: (conn=26256) You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '%Coding%' at line 1>
 [2/13/24, 2:20 PM]|BookCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1064: (conn=26345) You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '%Coding%' at line 1>
+[2/15/24, 1:02 PM]|AccountHolder|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1146: (conn=44451) Table 'spr24_csc429_msaad1.AccountHolder' doesn't exist>
