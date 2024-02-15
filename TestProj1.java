@@ -178,50 +178,57 @@ public class TestProj1 {
 
                 System.out.println("\nYou have selected 'insertNewBook'");
 
+                input.nextLine();
                 Properties newBookInfo = new Properties();
 
                 System.out.print("Please enter a new book title: ");
-                newBookInfo.setProperty("bookTitle", input.next());
+                newBookInfo.setProperty("bookTitle", input.nextLine());
 
                 System.out.print("Please enter a new book Author: ");
-                newBookInfo.setProperty("author", input.next());
+                newBookInfo.setProperty("author", input.nextLine());
 
                 System.out.print("Please enter a new Publication Year: ");
-                newBookInfo.setProperty("pubYear", input.next());
+                newBookInfo.setProperty("pubYear", input.nextLine());
 
                 Book newBook = new Book(newBookInfo);
                 newBook.update();
+
+                printList = false;
+                patPrintList = false;
 
             } else if (userOption == 10) { // insertNewPatron
 
                 System.out.println("\nYou have selected 'insertNewPatron'");
 
                 Properties newPatronInfo = new Properties();
+                input.nextLine();
 
                 System.out.print("Please enter a new patron name: ");
-                newPatronInfo.setProperty("patronName", input.next());
+                newPatronInfo.setProperty("name", input.nextLine());
 
                 System.out.print("Please enter a new patron address: ");
-                newPatronInfo.setProperty("author", input.next());
+                newPatronInfo.setProperty("address", input.nextLine());
 
                 System.out.print("Please enter a new patron city: ");
-                newPatronInfo.setProperty("city", input.next());
+                newPatronInfo.setProperty("city", input.nextLine());
 
                 System.out.print("Please enter a new patron state code: ");
-                newPatronInfo.setProperty("stateCode", input.next());
+                newPatronInfo.setProperty("stateCode", input.nextLine());
 
                 System.out.print("Please enter a new patron zip code: ");
-                newPatronInfo.setProperty("zip", input.next());
+                newPatronInfo.setProperty("zip", input.nextLine());
 
                 System.out.print("Please enter a new patron email: ");
-                newPatronInfo.setProperty("email", input.next());
+                newPatronInfo.setProperty("email", input.nextLine());
 
                 System.out.print("Please enter a new patron date of birth: ");
-                newPatronInfo.setProperty("dateOfBirth", input.next());
+                newPatronInfo.setProperty("dateOfBirth", input.nextLine());
 
                 Patron newPatron = new Patron(newPatronInfo);
                 newPatron.update();
 
+                printList = false;
+                patPrintList = false;
 
             } else if (userOption == -1) {
                 // SPECIAL CASE. If -1 then just continue with the loop and don't print anything.
