@@ -51,3 +51,4 @@
 [2/15/24, 1:59 PM]|Patron|insertAutoIncrementalPersistentState|Error|NOTAG|null<SQL Exception: 1406: (conn=46655) Data too long for column 'stateCode' at row 1>
 [2/15/24, 2:00 PM]|Patron|insertAutoIncrementalPersistentState|Error|NOTAG|null<SQL Exception: 1406: (conn=46656) Data too long for column 'stateCode' at row 1>
 [2/15/24, 2:01 PM]|BookCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1064: (conn=46700) You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1>
+[2/20/24, 1:44 PM]|PatronCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1064: (conn=49660) You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '\' at line 1>

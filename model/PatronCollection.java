@@ -60,11 +60,11 @@ public class PatronCollection extends EntityBase {
         //if they only enter the year
         int len = year.length();
         if (len == 4){
-            year = year + "-1-1";
+            year = year + "-01-01";
         }
 
         // Pull the data
-        String query = "SELECT * FROM " + myTableName + " WHERE dateOfBirth > " + year;
+        String query = "SELECT * FROM " + myTableName + " WHERE dateOfBirth > " + '"' + year + '"';
 
         try {
             updatePatronListFromSQL(query);
